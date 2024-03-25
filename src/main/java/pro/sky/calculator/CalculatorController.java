@@ -43,6 +43,7 @@ public class CalculatorController {
         return generateMessage(num1, num2, '*', result);
     }
 
+
     @GetMapping("/divide")
     public String divideNumbers(@RequestParam(required = false) Integer num1, @RequestParam(required = false) Integer num2) {
         if (num1 == null || num2 == null) {
