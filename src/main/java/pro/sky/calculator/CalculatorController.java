@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/calculator")
 public class CalculatorController {
 
-    private CalculatorService calculatorService;
+    private final CalculatorService calculatorService;
+
+    public CalculatorController(CalculatorService calculatorService) {
+        this.calculatorService = calculatorService;
+    }
 
     @GetMapping
     public String showGreetings() {
@@ -42,6 +46,7 @@ public class CalculatorController {
         int result = calculatorService.sum(num1, num2);
         return generateMessage(num1, num2, '*', result);
     }
+
 
     @GetMapping("/divide")
     public String divideNumbers(@RequestParam(required = false) Integer num1, @RequestParam(required = false) Integer num2) {
